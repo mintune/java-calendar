@@ -4,12 +4,20 @@ import java.util.Scanner;
 
 public class Calendar {
 
-	private static final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
 	public int getMaxDaysOfMonth(int month) {
-		return MAX_DAYS[month - 1];
+		switch (month) {
+		case 2:
+			return 28;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			return 30;
+		default:
+			return 31;
+		}
 	}
-	
+
 	public void printSampleCalendar() {
 		System.out.println("Hello, Calendar");
 		System.out.println();
@@ -28,13 +36,11 @@ public class Calendar {
 		System.out.print("달 입력 : ");
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
-		
+
 		int month = scanner.nextInt();
 
 		System.out.printf("%d월은 %d일까지 있습니다.\n\n", month, cal.getMaxDaysOfMonth(month));
 
-		cal.printSampleCalendar();
-		
 		scanner.close();
 	}
 }
