@@ -4,18 +4,10 @@ import java.util.Scanner;
 
 public class Calendar {
 
+	private static final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
 	public int getMaxDaysOfMonth(int month) {
-		switch (month) {
-		case 2:
-			return 28;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			return 30;
-		default:
-			return 31;
-		}
+		return MAX_DAYS[month - 1];
 	}
 
 	public void printSampleCalendar() {
@@ -33,14 +25,21 @@ public class Calendar {
 	public static void main(String[] args) {
 
 		// 숫자를 입력받아 해당하는 달의 최대 일수를 촐력하는 프로그램
-		System.out.print("달 입력 : ");
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
 
-		int month = scanner.nextInt();
-
-		System.out.printf("%d월은 %d일까지 있습니다.\n\n", month, cal.getMaxDaysOfMonth(month));
-
+		
+		System.out.print("반복 횟수 : ");
+		int repeat = scanner.nextInt();
+		
+		for(int i = 0; i < repeat; i++) {
+			System.out.print("달 입력 : ");
+			int month = scanner.nextInt();
+			
+			System.out.printf("%d월은 %d일까지 있습니다.\n\n", month, cal.getMaxDaysOfMonth(month));
+		}
+		
+		System.out.println("Bye~");
 		scanner.close();
 	}
 }
